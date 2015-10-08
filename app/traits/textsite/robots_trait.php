@@ -8,7 +8,8 @@ trait Robots {
 
 		$fh = fopen(  $this->robotDestination() . '/robots.txt' , 'w' );
 		$robot  = 'User-agent: *' . PHP_EOL;
-		$robot .= 'Disallow: /shop/' . PHP_EOL;
+		$robot .= 'Disallow: /goto/' . PHP_EOL;
+		$robot .= PHP_EOL;
 		$robot .= 'Sitemap: ' . $this->getDomain() . '/sitemap_index.xml';
 		fwrite( $fh, $robot );
 		fclose( $fh );

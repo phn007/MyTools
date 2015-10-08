@@ -17,7 +17,8 @@ class BlogController extends Controller {
 		$model = $this->model( 'blog/articleCategory' );
 		$this->blogCategories = $model->getArticleCategory();
 
-		$this->seoTags = null;
+		$model = $this->model( 'blog/seoTagsBlog' );
+		$this->seoTags = $model->seoTagsBlog();
 	}
 
 	function article( $params ) {
@@ -31,7 +32,10 @@ class BlogController extends Controller {
 		$model = $this->model( 'blog/articleCategory' );
 		$this->blogCategories = $model->getArticleCategory();
 
-		$this->seoTags = null;
+		$catName = $params[0];
+		$articleName = str_replace( array('_', FORMAT ), array( ' ', '' ) ,$params[1] );
+		$model = $this->model( 'blog/seoTagsBlog' );
+		$this->seoTags = $model->seoTagsArticle( $catName, $articleName );
 	}
 
 	function category( $params ) {
@@ -57,6 +61,7 @@ class BlogController extends Controller {
 		$model = $this->model( 'blog/articleCategory' );
 		$this->blogCategories = $model->getArticleCategory();
 
-		$this->seoTags = null;
+		$model = $this->model( 'blog/seoTagsBlog' );
+		$this->seoTags = $model->seoTagsCategory( $catName );
 	}
 }

@@ -15,11 +15,11 @@ class CatByBrandModel extends AppComponent {
 			$filename = $catname;
 			$arr = explode( '-', $catname );
 
-			if ( is_numeric( end( $arr) ) ) {
-				$num = count( $arr );
-				$endNum = $num - 1;
-				unset( $arr[$endNum] );
-			}
+			// if ( is_numeric( end( $arr) ) ) {
+			// 	$num = count( $arr );
+			// 	$endNum = $num - 1;
+			// 	unset( $arr[$endNum] );
+			// }
 
 			$catname = implode( ' ', $arr );
 			$catname = str_replace( 'amp', '&', $catname );

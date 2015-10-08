@@ -10,6 +10,7 @@ class ShopController extends Controller {
 		$productItems = $model->homeProducts();
 		$this->categoryGroup = $productItems['category-group'];
 
-		$this->seoTags = null;
+		$model = $this->model( 'shop/shopSeoTags' );
+		$this->seoTags = $model->seoTags();
 	}
 }

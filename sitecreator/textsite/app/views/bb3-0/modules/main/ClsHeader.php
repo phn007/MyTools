@@ -17,7 +17,6 @@ class ClsHeader {
                 <nav role="navigation">
                     <ul id="js-navigation-menu" class="navigation-menu show">
                     	<li class="nav-link"><a href="<?php echo HOME_LINK?>">HOME</a></li>
-                    	<li class="nav-link"><a href="<?php echo HOME_LINK?>blog/page/1">BLOG</a></li>
                     	<li class="nav-link"><a href="<?php echo HOME_LINK?>shop">SHOP</a></li>
                     	<li class="nav-link"><a href="<?php echo HOME_URL?>about-us<?php echo FORMAT?>">ABOUT</a></li>
                     	<li class="nav-link"><a href="<?php echo HOME_URL?>contact-us<?php echo FORMAT?>">CONTACT</a></li>

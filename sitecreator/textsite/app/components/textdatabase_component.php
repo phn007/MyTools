@@ -2,11 +2,11 @@
 class TextDatabaseComponent {
 	
 	function checkExistTextFilePath( $path ) {
-		try {
-			if ( ! file_exists( $path ) ) throw new CustomException( 'TextFile path does not exist.' );
-		} catch( CustomException $e ) {
-			$e->handle();
-		}
+		// try {
+		// 	if ( ! file_exists( $path ) ) throw new CustomException( 'TextFile path does not exist.' );
+		// } catch( CustomException $e ) {
+		// 	$e->handle();
+		// }
 	}
 	
 	function getContentFromSerializeTextFile( $textFilePath ) {

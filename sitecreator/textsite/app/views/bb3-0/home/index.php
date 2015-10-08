@@ -5,7 +5,4 @@
 	<div id="new-product">
 		<?php if ( isset( $home['newProduct'] ) ) echo $home['newProduct'] ?>
 	</div>
-	<div id="article-list">
-		<?php if ( isset( $home['articleList'] ) ) echo $home['articleList'] ?>
-	</div>
 </div>

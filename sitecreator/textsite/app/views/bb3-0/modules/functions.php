@@ -30,15 +30,6 @@ switch ( $currentPage ) {
 	case 'brands-page':
 		$categories = categoriesPage( $categories, $paging, $catType );
 		break;
-	case 'blog-page':
-		$articles = blogPage( $articles, $pagination, $blogCategories );
-		break;
-	case 'blog-category-page':
-		$articles = blogCategoryPage( $articles, $pagination, $blogCategories );
-		break;
-	case 'blog-article-page':
-		$article = blogArticlePage( $article, $blogCategories );
-		break;
 	case 'brand-index-page':
 		$brands = brandIndexPage( $brands );
 		break;
@@ -68,8 +59,7 @@ function homePage( $productItems=null, $categoryList=null, $brandList=null ) {
 
 	return array(
 		'cycleSlideShow' => Html::get( 'homePage', 'cycleSlideShow', $cycleProducts ),
-		'newProduct' => Html::get( 'homepage', 'newProduct', $items ),
-		'articleList' => Html::get( 'homepage', 'articleList', null )
+		'newProduct' => Html::get( 'homepage', 'newProduct', $items )
 	);
 }
 
@@ -81,7 +71,7 @@ function productPage( $productDetail, $spinContent, $relatedProducts, $paging, $
 		'productDetail' => Html::get( 'productPage', 'productDetail', $productDetailData ),
 		'relatedProducts' => Html::get( 'productPage', 'relatedProducts', $relatedProducts),
 		'pagination' => Html::get( 'productPage', 'pagination', $paging ),
-		'searchKeyword' => Html::get( 'productPage', 'searchKeyword', $searchKeyword ),
+		//'searchKeyword' => Html::get( 'productPage', 'searchKeyword', $searchKeyword ),
 	);
 }
 
@@ -98,29 +88,6 @@ function categoriesPage( $categories, $paging, $catType ) {
 	return array(
 		'links' => Html::get( 'categoriesPage', 'categories', $params ),
 		'pagination' => Html::get( 'categoriesPage', 'pagination', $paging ),
-	);
-}
-
-function blogPage( $articles, $pagination, $blogCategories ) {
-	return array(
-		'list' => Html::get( 'blogPage', 'articleList', $articles ),
-		'categoryList' => Html::get( 'blogPage', 'categoryList', $blogCategories ),
-		'pagination' => Html::get('blogPage', 'pagination', $pagination )
-	);
-}
-
-function blogCategoryPage( $articles, $pagination, $blogCategories ) {
-	return array(
-		'list' => Html::get( 'blogPage', 'articleList', $articles ),
-		'categoryList' => Html::get( 'blogPage', 'categoryList', $blogCategories ),
-		'pagination' => Html::get('blogPage', 'pagination', $pagination )
-	);
-}
-
-function blogArticlePage( $article, $blogCategories ) {
-	return array( 
-		'article' => Html::get( 'blogArticlePage', 'article', $article ),
-		'categoryList' => Html::get( 'blogArticlePage', 'categoryList', $blogCategories)
 	);
 }
 

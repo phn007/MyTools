@@ -39,13 +39,15 @@ trait ProductDetail {
  	}
 
 	function productItem( $productItemList ) {
-		try {
-			if ( !array_key_exists( $this->productKey, $productItemList ) ) 
-				throw new CustomException( 'Product Key Not Found.' );
-			return $productItemList[$this->productKey];
-		} catch( CustomException $e ) {
-			$e->handle();
-		}
+		// try {
+		// 	if ( !array_key_exists( $this->productKey, $productItemList ) ) 
+		// 		throw new CustomException( 'Product Key Not Found.' );
+		// 	return $productItemList[$this->productKey];
+		// } catch( CustomException $e ) {
+		// 	$e->handle();
+		// }
+
+		return $productItemList[$this->productKey];
 	}
 
 	function productItemList( $productPath ) {

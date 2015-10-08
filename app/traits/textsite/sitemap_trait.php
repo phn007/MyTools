@@ -42,7 +42,7 @@ trait Sitemap {
 	function loopThroughProductItems( $items ) {
 		foreach ( $items as $key => $item ) {
 			$this->productKey = $key;
-			if ( $this->countProductPerFile > 5000 ) 
+			if ( $this->countProductPerFile > 8000 ) 
 				$this->createXmlIfExceedLimit();
 			else 
 				$this->createXmlFile();
@@ -75,6 +75,7 @@ trait SetPermalink {
 	function setPermalink() {
 		$url = array(
 			'homeUrl' => rtrim( $this->homeUrl(), '/' ),
+			'shop' => 'shop',
 			'productFile' => $this->productFile,
 			'productKey' => $this->productKey . $this->format(),
 		);

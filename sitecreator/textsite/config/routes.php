@@ -10,11 +10,10 @@ Map::get( '/brand-index/(.*)', 'brandIndex#index' );
 Map::get( '/cat-by-brand/(.*)', 'brandIndex#catByBrand' );
 Map::get( '/product-by-cat/(.*)', 'brandIndex#productByCategory' );
 
-
+Map::get( '/shop', 'shop#index' );
 Map::get( '/shop/categories/(.*)' . FORMAT, 'categories#categories' );
 Map::get( '/shop/brands/(.*)' . FORMAT, 'categories#brands' );
 
-Map::get( '/shop', 'shop#index' );
 Map::get( '/shop/category/(.*)' . FORMAT, 'category#category' );
 Map::get( '/shop/brand/(.*)' . FORMAT, 'category#brand' );
 Map::get( '/shop/(.*)', 'product#index' );

@@ -36,6 +36,7 @@
 
 require_once 'PEAR/Exception.php';
 
+
 /**
  * Handling of error messages and exceptions.
  *

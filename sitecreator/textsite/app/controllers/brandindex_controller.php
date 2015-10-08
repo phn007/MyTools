@@ -9,7 +9,8 @@ class BrandIndexController extends Controller {
 		$model = $this->model( 'brandIndex/brandindex' );
 		$this->brands = $model->getBrandByIndex( $params );
 
-		$this->seoTags = null;
+		$model = $this->model( 'brandIndex/brandIndexSeoTags' );
+		$this->seoTags = $model->indexSeoTags();
 	}
 
 	function catByBrand( $params ) {
@@ -20,7 +21,10 @@ class BrandIndexController extends Controller {
 		$model = $this->model( 'brandIndex/catByBrand' );
 		$this->catByBrandList = $model->getCategoryList( $params );
 
-		$this->seoTags = null;
+		$brandName = str_replace( array( '-', FORMAT ), array( ' ', '' ), $params[0] );
+		$brandName = ucwords( $brandName );
+		$model = $this->model( 'brandIndex/brandIndexSeoTags' );
+		$this->seoTags = $model->categoryByBrandSeoTags( $brandName );
 	}
 
 	function productByCategory( $params ) {
@@ -39,6 +43,8 @@ class BrandIndexController extends Controller {
 		$model = $this->model( 'brandIndex/productByCategoryPagination');
 		$this->pagination = $model->setPagination( $brandname, $productFile, $currentPage, $result['lastPage'] );
 
-		$this->seoTags = null;
+		$productFile = ucwords( str_replace( '-', ' ', $productFile ) );
+		$model = $this->model( 'brandIndex/brandIndexSeoTags' );
+		$this->seoTags = $model->productfByCategorySeoTags( $brandname, $productFile );
 	}
 }

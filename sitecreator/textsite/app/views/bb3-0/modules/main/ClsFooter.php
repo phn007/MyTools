@@ -16,9 +16,7 @@ class ClsFooter {
 	        	</ul>
 	        	<ul id="footer-category">
 	            	<li><a href="<?php echo HOME_URL?>shop">Shop</a></li>
-	            	<li><a href="<?php echo $this->getBlogLink( 1 )?>">Blog</a></li>
-	            	<?php $this->linkout( $data )?>
-	            	
+	            	<li><a href="<?php echo HOME_LINK?>">Home</a></li>
 	        	</ul>
 			</div>
 			<hr id="hr-footer">

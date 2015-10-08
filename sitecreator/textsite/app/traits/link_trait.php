@@ -63,7 +63,7 @@ trait BrandIndexLink {
 			'productByCat' => 'product-by-cat',
 			'brandname' => urlencode( $brandname ),
 			'pageNumber' => $pageNumber,
-			'productFile' => $productFile
+			'productFile' => $productFile . FORMAT
 		);
 		return implode( '/', $url );
 	}

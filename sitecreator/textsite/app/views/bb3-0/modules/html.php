@@ -131,27 +131,6 @@ trait Components {
 		);
 	}
 
-	function blogPage() {
-		return array(
-			'dir' => 'blog',
-			'id' => array( 
-				'articleList' => 'ClsArticleList',
-				'categoryList' => 'ClsCategoryList',
-				'pagination' => 'ClsPagination' 
-			)
-		);
-	}
-
-	function blogArticlePage() {
-		return array(
-			'dir' => 'blog',
-			'id' => array( 
-				'article' => 'ClsArticle',
-				'categoryList' => 'ClsCategoryList'
-			)
-		);
-	}
-
 	function brandIndexPage() {
 		return array(		
 			'dir' => 'brandIndex',
