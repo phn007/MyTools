@@ -34,6 +34,7 @@ define( 'SID', $prefix_sid );
 //Theme
 define( 'THEME_NAME', $theme_name );
 define( 'THEME_URL', HOME_URL . 'app/views/' . THEME_NAME . '/' );
+define( 'THEME_PATH', BASE_PATH . 'app/views/' . THEME_NAME . '/' );
 define( 'AUTHOR', $site_author );
 define( 'SITE_NAME', $site_name );
 define( 'SITE_DESC', $site_desc );
