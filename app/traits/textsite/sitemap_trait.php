@@ -114,8 +114,8 @@ trait XmlFileAndDirectory {
 	function sitemapSource() {
 		$path = TEXTSITE_PATH . 
 				$this->config['project'] . '/' . 
-				$this->config['site_dir'] . '/contents/products/';
-
+				$this->config['site_dir'] . '/' . 
+				$this->config['app_dir'] . '/contents/products/';
 		return $path;
 	}
 
