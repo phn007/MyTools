@@ -1,6 +1,6 @@
 <?php
 class CategoryController extends Controller {
-    function category( $params ) {
+    function category( $params ) {;
         $this->currentPage = 'category-page';
         $this->layout = CATEGORY_LAYOUT;
         $this->view = 'index';
@@ -11,7 +11,7 @@ class CategoryController extends Controller {
 
     function brand( $params ) {;
         $this->currentPage = 'category-page';
-		    $this->layout = CATEGORY_LAYOUT;
+		$this->layout = CATEGORY_LAYOUT;
       	$this->view = 'index';
 
         $this->params = $params;

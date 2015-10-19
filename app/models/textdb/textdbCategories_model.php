@@ -10,14 +10,14 @@ class TextdbCategoriesModel extends Controller {
 	function create( $siteConfigData ) {
 		foreach ( $siteConfigData as $config ) { 
 			extract( $config );
-			$productDir = $this->getProductDirectories( $project, $site_dir );
+			$productDir = $this->getProductDirectories( $project, $site_dir, $app_dir );
 			$files = $this->getProductTextFileGroupBySiteDirName( $productDir );
-			$this->readProductDataAndWriteToTextFile( $files, $project, $site_dir );
+			$this->readProductDataAndWriteToTextFile( $files, $project, $site_dir, $app_dir );
 		}
 	}
 
-	function getProductDirectories( $project, $site_dir ) {
-		return TEXTSITE_PATH . $project . '/' . $site_dir . '/contents/products';
+	function getProductDirectories( $project, $site_dir, $app_dir ) {
+		return TEXTSITE_PATH . $project . '/' . $site_dir . '/' . $app_dir . '/contents/products';
 	}
 
 	function getProductTextFileGroupBySiteDirName( $productDir ) {
@@ -38,7 +38,7 @@ trait ReadProductDataAndWriteToTextFile {
 	private $categoryData;
 	private $brandData;
 
-	function readProductDataAndWriteToTextFile( $files, $project, $site_dir ) {;
+	function readProductDataAndWriteToTextFile( $files, $project, $site_dir, $app_dir ) {;
 		foreach ( $files as $path ) {
 			$productFilename = $this->getFilenameFromProductFilePath( $path );
 			$content = $this->readProductDataFromTextFile( $path );
@@ -51,8 +51,8 @@ trait ReadProductDataAndWriteToTextFile {
 		$catData = $this->parseData( $catData );
 		$brandData = $this->parseData( $brandData );
 
-		$this->writeTextFile( $catData, $project, $site_dir, 'categories' );
-		$this->writeTextFile( $brandData, $project, $site_dir, 'brands' );
+		$this->writeTextFile( $catData, $project, $site_dir, $app_dir, 'categories' );
+		$this->writeTextFile( $brandData, $project, $site_dir, $app_dir, 'brands' );
 	}
 
 	function filterProductFilenameForEachCategory( $productFilename, $content  ) {
@@ -82,8 +82,8 @@ trait ReadProductDataAndWriteToTextFile {
 		return $data;
 	}
 
-	function writeTextFile( $data, $project, $site_dir, $catDir ) {
-		$path = $this->setTextFilePath( $project, $site_dir, $catDir );
+	function writeTextFile( $data, $project, $site_dir, $app_dir, $catDir ) {
+		$path = $this->setTextFilePath( $project, $site_dir, $app_dir, $catDir );
 		Helper::make_dir( $path );
 		$filename = $path . $catDir . '.txt';
 		$data = serialize( $data );
@@ -92,8 +92,8 @@ trait ReadProductDataAndWriteToTextFile {
 
 	}
 
-	function setTextFilePath( $project, $site_dir, $catDir ) {
-		return TEXTSITE_PATH . $project . '/' . $site_dir . '/contents/';
+	function setTextFilePath( $project, $site_dir, $app_dir, $catDir ) {
+		return TEXTSITE_PATH . $project . '/' . $site_dir . '/' . $app_dir . '/contents/';
 	}
 
 	function printReport( $filename ) {

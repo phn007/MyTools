@@ -29,7 +29,7 @@ class ProductPage extends Controller {
 			'productDetail' => Html::get( 'productPage', 'productDetail', $productDetailData ),
 			'relatedProducts' => Html::get( 'productPage', 'relatedProducts', $relatedProducts),
 			'pagination' => Html::get( 'productPage', 'pagination', $paging ),
-			//'searchKeyword' => Html::get( 'productPage', 'searchKeyword', $searchKeyword ),
+			'searchKeyword' => Html::get( 'productPage', 'searchKeyword', $searchKeyword ),
 			'spinContent' => $spinContent,
 			'seoTags' => $seoTags
 		);

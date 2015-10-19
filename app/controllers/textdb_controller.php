@@ -30,9 +30,10 @@ class TextdbController extends Controller {
 			$projectName    = $this->project;
 			$merchantData   = $this->getMerchantData( $csvData );
 			$siteNumber     = $this->getSiteNumber( $csvData );
-			$siteDirNames   = $this->getSiteDirNames( $csvData );	
+			$siteDirNames   = $this->getSiteDirNames( $csvData );
+			$appDirNames    = $this->getAppDirNames( $csvData );	
 			$productModel = $this->model( 'textdb/textdbProducts' );
-			$productModel->create( $projectName, $iniFilename, $merchantData, $siteNumber, $siteDirNames );
+			$productModel->create( $projectName, $iniFilename, $merchantData, $siteNumber, $siteDirNames, $appDirNames );
 		}
 
 		if ( $function == 'category' || $function == 'homepagecat' || $function == 'all' ) {

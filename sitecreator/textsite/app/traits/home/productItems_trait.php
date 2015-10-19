@@ -5,7 +5,7 @@ trait ProductItems {
 	use DefineProductGroup;
 
 	function productItems() {
-		$cachePath = 'cache/home-products';
+		$cachePath = BASE_PATH . 'cache/home-products';
 		$cacheName = 'home-product-file';
 		$cacheTime = 300;
 		$c = new Cache();

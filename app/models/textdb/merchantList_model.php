@@ -8,7 +8,7 @@ class MerchantListModel extends Controller {
 
 		foreach ( $configData as $config ) {
 			extract( $config );
-			$saveFilename = $this->merchantListFilePath( $project, $site_dir );
+			$saveFilename = $this->merchantListFilePath( $project, $site_dir, $app_dir );
 			$this->saveFile( $saveFilename, $merchants );
 		}
 	}
@@ -18,7 +18,7 @@ class MerchantListModel extends Controller {
 		file_put_contents( $filename, $data );
 	}
 
-	function merchantListFilePath( $project, $site_dir ) {
-		return TEXTSITE_PATH . $project . '/' . $site_dir . '/contents/merchant-list.txt';
+	function merchantListFilePath( $project, $site_dir, $app_dir ) {
+		return TEXTSITE_PATH . $project . '/' . $site_dir . '/' . $app_dir .'/contents/merchant-list.txt';
 	}
 }

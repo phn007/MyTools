@@ -30,9 +30,10 @@ class TextdbProductsModel extends Controller {
 	private $totalCreateProducts = 0;
 
 	//function Main
-	function create( $projectName, $dotIniFilename, $merchantData, $siteNumber, $siteDirNames ) {
+	function create( $projectName, $dotIniFilename, $merchantData, $siteNumber, $siteDirNames, $appDirNames ) {
 		$this->projectName = $projectName;
 		$this->siteDirNames = $siteDirNames;
+		$this->appDirNames = $appDirNames;
 		$merchantData = $this->randomMerchantdata( $merchantData );
 
 		$this->printHeadline( $dotIniFilename );
@@ -229,13 +230,19 @@ trait WriteTextDatabase {
 
 	function getTextDbPath() {
 		$siteDirName = $this->getSiteDirName();
-		$path = TEXTSITE_PATH . $this->projectName . '/' . $siteDirName . '/contents/products/';
+		$appDirName = $this->getAppDirName();
+		$path = TEXTSITE_PATH . $this->projectName . '/' . $siteDirName . '/' . $appDirName . '/contents/products/';
 		return $path;
 	}
 
 	function getSiteDirName() {
 		$siteDirIndex = $this->countSiteNumber -1;
 		return $this->siteDirNames[$siteDirIndex];
+	}
+
+	function getAppDirName() {
+		$siteDirIndex = $this->countSiteNumber -1;
+		return $this->appDirNames[$siteDirIndex];
 	}
 }
 

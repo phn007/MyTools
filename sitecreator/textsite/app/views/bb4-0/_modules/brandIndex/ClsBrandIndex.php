@@ -8,7 +8,12 @@ class ClsBrandIndex {
 		<div id="a-to-z"><?php echo $brandIndex->AToZLink()?></div>
 		<div id="brand-index-content">
 			<h2><?php echo strtoupper( $data['alpha'] )?></h2>
-			<?php $this->displayItems( $data['brands'] ) ?>
+			<?php 
+				if ( !empty( $data['brands'] ) )
+					$this->displayItems( $data['brands'] );
+				else
+					echo '<div class="brand-index-item">Brand Not Found</div>';
+			?>
 		</div>
 	<?php
 	}

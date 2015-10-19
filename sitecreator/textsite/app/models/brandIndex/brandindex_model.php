@@ -25,7 +25,10 @@ class BrandIndexModel extends AppComponent {
 				$result[$name] = $key;
 			}
 		}
-		ksort( $result );
+
+		if ( !empty( $resutl ) )
+			ksort( $result );
+
 		return $result;
 	}
 

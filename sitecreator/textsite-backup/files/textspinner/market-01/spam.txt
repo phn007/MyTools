@@ -1,5 +1,0 @@
-#keyword#-[cta]!
-[prefixspam] #keyword#
-#keyword# [postfixspam]
-[prefixspam] #keyword# [postfixspam]
-#keyword#-[store]!

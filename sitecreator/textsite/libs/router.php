@@ -127,8 +127,7 @@ class Map extends Object {
 		//Plugins
 		include APP_PATH . 'views/' . THEME_NAME . '/plugins/plugins.php';
 		
-		//Functions
-		//include APP_PATH  . 'views/' . THEME_NAME . '/modules/functions.php';
+		//Module
 		include APP_PATH  . 'views/' . THEME_NAME . '/_modules/module.php';
 		
 		//Load View

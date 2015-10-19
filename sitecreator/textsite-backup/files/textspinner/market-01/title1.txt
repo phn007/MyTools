@@ -1,2 +1,0 @@
-#keyword# [postfix]
-[prefix] #keyword#

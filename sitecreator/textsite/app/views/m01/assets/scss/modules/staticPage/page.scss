@@ -1,0 +1,9 @@
+.page {
+	a {
+		text-decoration: none;
+		color: transparentize(black, 0.15);
+		&:hover {
+			color: $base-color;
+		}
+	}
+}

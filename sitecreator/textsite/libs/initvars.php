@@ -1,5 +1,5 @@
 <?php
-define( 'BASE_PATH', dirname( dirname( realpath( __FILE__ ) ) ) . '/' );
+define( 'BASE_PATH', dirname( dirname( realpath( __FILE__ ) ) ) . '/');
 define( 'APP_PATH', BASE_PATH . 'app/' );
 
 /*
@@ -33,16 +33,21 @@ define( 'SID', $prefix_sid );
 
 //Theme
 define( 'THEME_NAME', $theme_name );
-define( 'THEME_URL', HOME_URL . 'app/views/' . THEME_NAME . '/' );
+//define( 'THEME_URL', HOME_URL . $appDir . '/app/views/' . THEME_NAME . '/' );
 define( 'THEME_PATH', BASE_PATH . 'app/views/' . THEME_NAME . '/' );
 define( 'AUTHOR', $site_author );
 define( 'SITE_NAME', $site_name );
 define( 'SITE_DESC', $site_desc );
 
-define( 'CSS_PATH', THEME_URL . 'assets/css/' );
-define( 'JS_PATH', THEME_URL . 'assets/js/' );
-define( 'IMG_PATH', THEME_URL . 'assets/img/' );
-define( 'BLANK_IMG', IMG_PATH . 'blank.png' );
+// define( 'CSS_PATH', THEME_URL . 'assets/css/' );
+// define( 'JS_PATH', THEME_URL . 'assets/js/' );
+// define( 'IMG_PATH', THEME_URL . 'assets/img/' );
+// define( 'BLANK_IMG', IMG_PATH . 'blank.png' );
+
+define( 'CSS_PATH', HOME_URL . 'assets/css/' );
+define( 'JS_PATH', HOME_URL . 'assets/js/' );
+define( 'IMG_PATH', HOME_URL . 'assets/img/' );
+define( 'BLANK_IMG', HOME_URL . 'assets/img/ajax-loader' );
 
 //สำหรับจัดรูปแบบให้ URL
 define( 'PROD_ROUTE', $prod_route );

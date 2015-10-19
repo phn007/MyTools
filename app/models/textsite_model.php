@@ -37,8 +37,11 @@ class TextsiteModel extends Controller {
 
 	function code() {
 		$this->cloneCom = $this->component( 'clone' );
-		$this->getAllExceptViews();
+		$this->getAllExceptViews(); //code_trait
 		$this->getViews();
+		$this->getAssets();
+		
+		$this->getSiteIndexFile();
 		
 		if ( isset( $this->options['r'] ) ) 
 			$this->getRouteFileForDevelopment();
@@ -71,6 +74,7 @@ class TextsiteModel extends Controller {
 	function theme() {
 		$this->cloneCom = $this->component( 'clone' );
 		$this->getViews();
+		$this->getAssets();
 	}
 
 	function serverStart( $siteConfigData ) {

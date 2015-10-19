@@ -112,12 +112,20 @@ trait XmlFileAndDirectory {
 	}
 
 	function sitemapSource() {
-		return TEXTSITE_PATH . $this->config['project'] . '/' . $this->config['site_dir'] . '/contents/products/';
+		$path = TEXTSITE_PATH . 
+				$this->config['project'] . '/' . 
+				$this->config['site_dir'] . '/contents/products/';
+
+		return $path;
 	}
 
 	function sitemapDestination() {
-		return TEXTSITE_PATH . $this->config['project'] . '/' . $this->config['site_dir'] . '/xml/';
+		$path = TEXTSITE_PATH . 
+				$this->config['project'] . '/' . 
+				$this->config['site_dir'] . '/xml/';
+		return $path;
 	} 
+
 }
 
 

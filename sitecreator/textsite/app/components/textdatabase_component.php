@@ -7,6 +7,8 @@ class TextDatabaseComponent {
 		// } catch( CustomException $e ) {
 		// 	$e->handle();
 		// }
+		if ( ! file_exists( $path ))
+			exit(0);
 	}
 	
 	function getContentFromSerializeTextFile( $textFilePath ) {

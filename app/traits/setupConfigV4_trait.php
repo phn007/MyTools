@@ -59,6 +59,13 @@ trait ConfigDataFromCsvFile {
 		}
 		return $siteDirs;
 	}
+
+	function getAppDirNames( $csvData ) {
+		foreach ( $csvData as $data ) {
+			$appDirNames[] = $data['app_dir'];
+		}
+		return $appDirNames;
+	}
 }
 
 trait DotINIFile {
@@ -224,6 +231,7 @@ trait GetConfigData {
 
 		//from csv
 		$data['site_dir'] = $siteConfig['site_dir'];
+		$data['app_dir'] = $siteConfig['app_dir'];
 		$data['site_name'] = $siteConfig['site_name'];
 		$data['prefix_sid'] = $siteConfig['prefix_sid'];
 		$data['url_format'] = $siteConfig['url_format'];

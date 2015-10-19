@@ -10,7 +10,7 @@ class CategoriesController extends Controller {
 	}
 
 	function brands( $params ) {
-		$this->currentPage = 'brands-page';
+		$this->currentPage = 'categories-page';
 		$this->layout = CATEGORIES_LAYOUT;
       	$this->view = 'index';
 

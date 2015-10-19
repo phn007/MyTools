@@ -9,9 +9,9 @@ class CategoryListForHomepageModel extends Controller {
 		foreach ( $siteConfigData as $config ) { 
 			extract( $config );
 
-			$categoryPath = $this->getCategoryPath( $project, $site_dir );
-			$list = $categoryList = $this->getCategoryList( $categoryPath, $project, $site_dir ); // SelectCategory Trait
-			$saveFilename = $this->categoryListFilePath( $project, $site_dir );
+			$categoryPath = $this->getCategoryPath( $project, $site_dir, $app_dir );
+			$list = $categoryList = $this->getCategoryList( $categoryPath, $project, $site_dir, $app_dir ); // SelectCategory Trait
+			$saveFilename = $this->categoryListFilePath( $project, $site_dir, $app_dir );
 			$this->saveFile( $saveFilename, $list );
 			$this->printReport( $saveFilename );
 		}
@@ -27,12 +27,12 @@ class CategoryListForHomepageModel extends Controller {
 	}
 
 
-	function categoryListFilePath( $project, $site_dir ) {
-		return TEXTSITE_PATH . $project . '/' . $site_dir . '/contents/categoryList-for-homepage.txt';
+	function categoryListFilePath( $project, $site_dir, $app_dir ) {
+		return TEXTSITE_PATH . $project . '/' . $site_dir . '/' . $app_dir . '/contents/categoryList-for-homepage.txt';
 	}
 
-	function getCategoryPath(  $project, $site_dir ) {
-		$path = TEXTSITE_PATH . $project . '/' . $site_dir . '/contents/categories.txt';
+	function getCategoryPath(  $project, $site_dir, $app_dir ) {
+		$path = TEXTSITE_PATH . $project . '/' . $site_dir . '/' . $app_dir . '/contents/categories.txt';
 		if ( file_exists( $path ) ) {
 			return $path;
 		} else {
@@ -42,10 +42,10 @@ class CategoryListForHomepageModel extends Controller {
 }
 
 trait SelectCategory {
-	function getCategoryList( $filePath, $project, $site_dir ) {
+	function getCategoryList( $filePath, $project, $site_dir, $app_dir ) {
 		$list = null;
 		$catItems = $this->getCategoryItems( $filePath );
-		$productPath = $this->getProductDirPath( $project, $site_dir );
+		$productPath = $this->getProductDirPath( $project, $site_dir, $app_dir );
 
 		$i = 0;
 		foreach ( $catItems as $cat ) {
@@ -84,8 +84,8 @@ trait SelectCategory {
 		return $items;
 	}
 
-	function getProductDirPath( $project, $site_dir ) {
-		return TEXTSITE_PATH . $project . '/' . $site_dir . '/contents/products/';
+	function getProductDirPath( $project, $site_dir, $app_dir ) {
+		return TEXTSITE_PATH . $project . '/' . $site_dir . '/' . $app_dir . '/contents/products/';
 	}
 
 }
