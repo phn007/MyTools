@@ -44,12 +44,14 @@ trait Code {
 		$source = $this->getSourcePath() . 'textsite/app/views/' . $this->config['theme_name'] . '/assets';
 		if ( !file_exists( $source ) ) die( "\nTheme directory not found!!!\n" );
 
-		$destination = $this->getDestinationPath() . 'assets';
+		//$destination = $this->getDestinationPath() . 'assets';
+		$destination = $this->getDestinationPath();
 		$excludeFiles = array( 
 			$source . '/less',
 			$source . '/sass',
 			$source . '/scss',
 			$source . '/.sass-cache',
+			$source . '/index.html',
 			$source . '/config.rb'
 		);
 		$this->cloneCom->runClone( $source, $destination, $excludeFiles, 'excludeMode' );
