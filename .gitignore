@@ -1,3 +1,7 @@
+configs/*
+!configs/example/
+files/statcounter/*
+!files/statcounter/_backup/
 .DS_Store
 sitecreator/textsite/app/views/bb3-0/assets/.sass-cache/*
 sitecreator/textsite/app/views/bb3-0-with-blog/assets/.sass-cache/*
