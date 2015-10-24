@@ -44,14 +44,15 @@ define( 'SITE_DESC', $site_desc );
 // define( 'IMG_PATH', THEME_URL . 'assets/img/' );
 // define( 'BLANK_IMG', IMG_PATH . 'blank.png' );
 
-// define( 'CSS_PATH', HOME_URL . 'assets/css/' );
-// define( 'JS_PATH', HOME_URL . 'assets/js/' );
-// define( 'IMG_PATH', HOME_URL . 'assets/img/' );
-// define( 'BLANK_IMG', HOME_URL . 'assets/img/ajax-loader' );
-define( 'CSS_PATH', HOME_URL . 'css/' );
-define( 'JS_PATH', HOME_URL . 'js/' );
-define( 'IMG_PATH', HOME_URL . 'img/' );
-define( 'BLANK_IMG', HOME_URL . 'img/ajax-loader' );
+define( 'CSS_PATH', HOME_URL . 'assets/css/' );
+define( 'JS_PATH', HOME_URL . 'assets/js/' );
+define( 'IMG_PATH', HOME_URL . 'assets/img/' );
+define( 'BLANK_IMG', HOME_URL . 'assets/img/ajax-loader' );
+// 
+// define( 'CSS_PATH', HOME_URL . 'css/' );
+// define( 'JS_PATH', HOME_URL . 'js/' );
+// define( 'IMG_PATH', HOME_URL . 'img/' );
+// define( 'BLANK_IMG', HOME_URL . 'img/ajax-loader' );
 
 //สำหรับจัดรูปแบบให้ URL
 define( 'PROD_ROUTE', $prod_route );

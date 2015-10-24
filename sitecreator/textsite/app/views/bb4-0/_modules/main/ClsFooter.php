@@ -5,6 +5,8 @@ class ClsFooter {
 
 	function createHtml( $data ) {
 		$brandIndex = new BrandIndexLinkAddon();
+		$sub = new SubdomainLinkListAddon();
+		$subdomain = $sub->linkList();
 	?>
 		<footer id="footer-container">
 			<div id="brand-index-footer"><?php echo $brandIndex->AToZLink()?></div>
@@ -19,6 +21,19 @@ class ClsFooter {
 	            	<li><a href="<?php echo HOME_LINK?>">Home</a></li>
 	        	</ul>
 			</div>
+
+			<?php 
+			if ( $subdomain ) {
+				echo '<hr id="hr-footer">';
+				echo '<div id="related-site">';
+			 	foreach ( $subdomain as $sub ) {
+			 		$subLink = 'http://' . $sub;
+			 		echo '<a href="' . $subLink . '">' . $sub . '</a>, ';
+			 	}
+			 	echo '</div>';
+			 }
+		 	?>
+
 			<hr id="hr-footer">
 			<div id="bottom-footer">
 				<?php echo $this->copyright()?>

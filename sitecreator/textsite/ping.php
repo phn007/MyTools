@@ -4,8 +4,7 @@ echo "<br>";
 	
 $sitemapUrl = HOME_URL . 'sitemap_index.xml';
 	
-echo $url = "http://www.google.com/webmasters/sitemaps/ping?sitemap=" . $sitemapUrl;
-
+echo $url = "http://www.google.com/webmasters/sitemaps/ping?sitemap=" . urlencode( $sitemapUrl );
 $returnCode = myCurl( $url );
 echo "<p>Google Sitemaps has been pinged (return code: $returnCode).</p>";
 
