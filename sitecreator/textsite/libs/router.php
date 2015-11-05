@@ -107,6 +107,19 @@ class Map extends Object {
 	 * -----------------------------------------------------------------------
 	*/
 	public static function render( $controller, $action ) {
+
+		//Extract Global Variables
+		extract( self::$user_vars );
+
+		//Plugins
+		include APP_PATH . 'views/' . THEME_NAME . '/plugins/plugins.php';
+		
+		//Module
+		include APP_PATH  . 'views/' . THEME_NAME . '/_modules/module.php';
+
+
+
+
 		$view_path   = self::view_path( $controller, $action );
 		$layout_path = self::get_layout( $controller, $action );
 		$main_path   = APP_PATH  . 'views/' . THEME_NAME . '/layouts/main.php';
@@ -120,15 +133,6 @@ class Map extends Object {
 		
 		self::write_file( $file_main, $view_layout_main );
 		unset( $view_layout_main );
-
-		//Extract Global Variables
-		extract( self::$user_vars );
-
-		//Plugins
-		include APP_PATH . 'views/' . THEME_NAME . '/plugins/plugins.php';
-		
-		//Module
-		include APP_PATH  . 'views/' . THEME_NAME . '/_modules/module.php';
 		
 		//Load View
 		include $file_main;

@@ -1,0 +1,2 @@
+<div id="category-container"><?php if ( isset( $module['items'] ) ) echo $module['items']?></div>
+<div id="addon-pagination"><?php if ( isset( $module['pagination'] ) ) echo $module['pagination']?></div>

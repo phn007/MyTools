@@ -1,0 +1,238 @@
+$desktop: new-breakpoint(min-width $min-desktop 15);
+
+#top-header {
+  //background: #2B2B2B;
+	background: $base-color;
+	#top-header-container {
+		@include outer-container;
+		#top-header-left {
+			@include span-columns(12);
+		}
+
+		#top-header-right {
+			@include span-columns(12);
+		}
+
+    //Tablet View
+    @include media(min-width $min-tablet max-width $max-tablet, 12) {
+      #top-header-left {
+        @include span-columns(6);
+      }
+
+      #top-header-right {
+        @include span-columns(6);
+      }
+    }
+
+    @include media($desktop) {
+      #top-header-left {
+        @include span-columns(6);
+      }
+
+      #top-header-right {
+        @include span-columns(6);
+      }
+    }
+	}
+}
+
+#bottom-header {
+	@include outer-container;
+
+  #bottom-header-left {
+    @include span-columns(12);
+  }
+
+  #bottom-header-right {
+    @include span-columns(12);
+  }
+
+
+  //Tablet View
+  @include media(min-width $min-tablet max-width $max-tablet, 12) {
+  	#bottom-header-left {
+  		@include span-columns(6);
+  	}
+
+  	#bottom-header-right {
+  		@include span-columns(6);
+  	}
+  }
+
+  //Desktop View
+    @include media($desktop) {
+      #bottom-header-left {
+        @include span-columns(6);
+      }
+
+      #bottom-header-right {
+        @include span-columns(6);
+      }
+    }
+}
+
+
+#top-header {
+	color: transparentize( white, 0.3 );
+	#top-header-container {
+		padding: 8px;
+
+		#top-header-left {
+			
+		}
+
+		#top-header-right {
+			text-align: right;
+      li {
+        display: inline-block;
+        margin-left: 10px;
+
+        a {
+          text-decoration: none;
+          color: transparentize( white, 0.3 );
+          font-size: 11px;
+
+          &:hover {
+            color: #FFFFFF;
+          }
+        }
+      }
+		}
+	}
+	
+}
+
+#bottom-header {
+	#bottom-header-left {
+		padding: 20px 0 20px 8px;
+		font-size: 35px;
+
+    a {
+      text-decoration: none;
+      color: transparentize( black, 0.15 );
+    }
+	}
+
+	#bottom-header-right {
+		padding: 30px 0 10px 8px;
+	}
+}
+
+
+
+
+
+
+//Navigation
+$horizontal-bar-mode: $max-tablet;
+$large-screen: em(860) !default;
+$navigation-height: 20px;
+$navigation-padding: 1em;
+
+$navigation-background: #FFFFFF;
+$navigation-color: transparentize(black, 0.15);
+$navigation-color-hover: $base-color;
+
+div.navigation {
+  background-color: $navigation-background;
+  //min-height: $navigation-height;
+  width: 100%;
+  z-index: 999;
+
+  margin-bottom: 20px;
+
+  .navigation-wrapper {
+    @include clearfix;
+    position: relative;
+    z-index: 9999;
+  }
+
+  // Mobile view
+  .navigation-menu-button {
+    color: $navigation-color;
+    display: block;
+    float: right;
+    font-weight: 700;
+    //line-height: $navigation-height;
+    margin: 0;
+    padding-right: 1em;
+
+
+    @include media ($horizontal-bar-mode) {
+      display: none;
+    }
+
+    &:focus,
+    &:hover {
+      color: $navigation-color-hover;
+    }
+  }
+
+  // Nav menu
+
+  nav {
+    float: none;
+    z-index: 9999999;
+    @include media ($horizontal-bar-mode) {
+      //float: left;
+    }
+  }
+
+  ul.navigation-menu {
+    -webkit-transform-style: preserve-3d; // stop webkit flicker
+    clear: both;
+    display: none;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 0;
+    width: 100%;
+    z-index: 9999;
+
+    &.show {
+      display: block;
+    }
+
+    @include media ($horizontal-bar-mode) {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  // The nav items
+  ul li.nav-link {
+    background: $navigation-background;
+    display: block;
+    line-height: $navigation-height;
+    overflow: hidden;
+    padding-right: 0.8em;
+    text-align: right;
+    width: 100%;
+    z-index: 9999;
+
+    @include media ($horizontal-bar-mode) {
+      background: transparent;
+      display: inline;
+      //line-height: $navigation-height;
+      text-decoration: none;
+      width: auto;
+    }
+
+    a {
+      color: $navigation-color;
+      display: inline-block;
+      font-weight: 400;
+      font-size: 14px;
+      text-decoration: none;
+
+      @include media ($horizontal-bar-mode) {
+        padding-right: 1em;
+      }
+
+      &:focus,
+      &:hover {
+        color: $navigation-color-hover;
+      }
+    }
+  }  
+}

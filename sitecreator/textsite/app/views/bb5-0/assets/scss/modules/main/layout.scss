@@ -1,0 +1,18 @@
+#breadcrumb {
+	#breadcrumb-container {
+		@include outer-container;
+	}
+}
+
+
+#breadcrumb {
+	background-color: #F5F5F5;
+	#breadcrumb-container {
+		padding: 8px;
+	}
+}
+
+.main-container {
+	@include outer-container;
+	padding: 20px 8px 20px 8px;
+}
