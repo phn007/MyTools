@@ -1,6 +1,6 @@
 <div id="breadcrumb">
 	<div id="breadcrumb-container">
-		Breadcrumb
+		<?php if ( isset( $module['breadcrumb'] ) ) echo $module['breadcrumb'] ?>
 	</div>
 </div>
 [%CONTENT%]

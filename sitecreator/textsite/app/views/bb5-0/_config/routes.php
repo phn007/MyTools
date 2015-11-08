@@ -11,8 +11,8 @@ Map::get( '/cat-by-brand/(.*)', 'brandIndex#catByBrand' );
 Map::get( '/product-by-cat/(.*)', 'brandIndex#productByCategory' );
 
 Map::get( '/shop', 'shop#index' );
-Map::get( '/shop/categories/(.*)' . FORMAT, 'categories#categories' );
-Map::get( '/shop/brands/(.*)' . FORMAT, 'categories#brands' );
+Map::get( '/shop/categories', 'categories#categories' );
+Map::get( '/shop/brands', 'categories#brands' );
 
 Map::get( '/shop/category/(.*)' . FORMAT, 'category#category' );
 Map::get( '/shop/brand/(.*)' . FORMAT, 'category#brand' );

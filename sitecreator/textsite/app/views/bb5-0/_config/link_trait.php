@@ -31,7 +31,7 @@ trait CategoryLink {
 }
 
 trait CategoriesLink {
-	function getCategoriesLink( $typeName, $pageNumber ) {
+	function getCategoriesLink( $typeName ) {
 		if ( $typeName == 'categories' )
 			$catname = 'categories';
 		if ( $typeName == 'brands' )
@@ -41,7 +41,6 @@ trait CategoriesLink {
 		'homeUrl' => rtrim( HOME_URL, '/' ),
 		'shop' => 'shop',
 		'CategoryName' => $typeName,
-		'pageNumber' => $pageNumber . FORMAT
 		);
 		return implode( '/', $url );
 	}

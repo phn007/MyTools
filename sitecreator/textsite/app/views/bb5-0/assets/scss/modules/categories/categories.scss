@@ -1,0 +1,27 @@
+
+#categories-link-container {
+	@include outer-container;
+
+	h2 {
+		margin-bottom: 30px;
+	}
+}
+
+.categories-link-content {
+	@include clearfix;
+	margin-bottom: 30px;
+
+	.categories-link-item {
+		@include span-columns(4);
+		@include omega(3n);
+		padding: 3px;
+
+		a {
+			text-decoration: none;
+			color: transparentize(black, 0.6);
+			&:hover {
+				color: $base-color;
+			}
+		}
+	}
+}

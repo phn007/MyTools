@@ -7,8 +7,8 @@ define( 'PRODUCT_BY_CAT_NUMBER_PER_PAGE', 50 );
 
 
 //Layout
-define( 'HOME_LAYOUT', 'layout' );
-define( 'PRODUCT_LAYOUT', 'productLayout' );
+define( 'HOME_LAYOUT', 'homeLayout' );
+define( 'PRODUCT_LAYOUT', 'layout' );
 define( 'CATEGORIES_LAYOUT', 'layout' );
 define( 'BRANDS_LAYOUT', 'layout' );
 define( 'CATEGORY_LAYOUT', 'layout' );

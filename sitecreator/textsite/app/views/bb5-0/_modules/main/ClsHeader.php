@@ -10,7 +10,6 @@ class ClsHeader {
 	?>
 			<div id="top-header">
 				<div id="top-header-container">
-					<div id="top-header-left">Top Left</div>
 					<div id="top-header-right">
 						<ul>
 							<li><a href="<?php echo HOME_URL?>about-us<?php echo FORMAT?>">About</a></li>
@@ -37,9 +36,8 @@ class ClsHeader {
                 <nav role="navigation">
                     <ul id="js-navigation-menu" class="navigation-menu show">
                     	<li class="nav-link"><a href="<?php echo HOME_LINK?>">HOME</a></li>
-                    	<li class="nav-link"><a href="<?php echo HOME_LINK?>blog/page/1">BLOG</a></li>
-                    	<li class="nav-link"><a href="<?php echo $this->getCategoriesLink( 'categories', 1 )?>">CATEGORIES</a></li>
-                    	<li class="nav-link"><a href="<?php echo $this->getCategoriesLink( 'brands', 1 )?>">BRANDS</a></li>
+                    	<li class="nav-link"><a href="<?php echo $this->getCategoriesLink( 'categories' )?>">CATEGORIES</a></li>
+                    	<li class="nav-link"><a href="<?php echo $this->getCategoriesLink( 'brands' )?>">BRANDS</a></li>
                     </ul>
                 </nav>
             </div>
@@ -51,3 +49,9 @@ class ClsHeader {
 		echo '<a href="' . HOME_LINK . '">' . strtoupper( SITE_NAME) . '</a>';
 	}
 }
+
+//echo '<li class="nav-link"><a href="' . HOME_URL . 'blog/page/1">BLOG</a></li>';
+
+
+
+

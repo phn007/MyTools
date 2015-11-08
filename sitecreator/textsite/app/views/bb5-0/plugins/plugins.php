@@ -4,3 +4,4 @@
 
 include APP_PATH . 'views/' . THEME_NAME . '/plugins/articleList.php';
 include APP_PATH . 'views/' . THEME_NAME . '/plugins/brandIndexLink.php';
+include APP_PATH . 'views/' . THEME_NAME . '/plugins/subdomainLinkList.php';

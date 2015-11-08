@@ -5,32 +5,20 @@ $desktop: new-breakpoint(min-width $min-desktop 15);
 	background: $base-color;
 	#top-header-container {
 		@include outer-container;
-		#top-header-left {
-			@include span-columns(12);
-		}
-
 		#top-header-right {
 			@include span-columns(12);
 		}
 
     //Tablet View
     @include media(min-width $min-tablet max-width $max-tablet, 12) {
-      #top-header-left {
-        @include span-columns(6);
-      }
-
       #top-header-right {
-        @include span-columns(6);
+        @include span-columns(12);
       }
     }
 
     @include media($desktop) {
-      #top-header-left {
-        @include span-columns(6);
-      }
-
       #top-header-right {
-        @include span-columns(6);
+        @include span-columns(12);
       }
     }
 	}

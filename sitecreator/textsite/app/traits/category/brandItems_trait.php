@@ -1,25 +1,25 @@
 <?php
 trait BrandItems {
 	use GetProductFiles;
-	use PageNumberList;
+	use ProductItemList;
 	use GetProudctItemsFromCurrentPage;
 
-	private $itemNumberPerPage = 100;
-	private $startPage = 1;
-	private $pageNumberList = array();
+	private $itemNumberPerPage = CATEGORY_ITEM_NUMBER_PER_PAGE;
 
 	function getBrandItems( $params ) {
 		$brandKey = $this->getBrandKey( $params );
 		$currentPageNumber = $this->getCurrentPageNumber( $params );
 		$productFiles = $this->getProductFiles( $brandKey ); // GetProductFiles Trait
 		$brandName = $this->getBrandName( $productFiles );
-		$pageNumberWithProductFile = $this->getPageNumberList( $brandName, $productFiles['items'], $currentPageNumber ); //PageNumberList Trait
-		$productItems = $this->getProductItemsFromCurrentPage( $brandName, $pageNumberWithProductFile, $currentPageNumber ); // GetProudctItemsFromCurrentPage Trait
-		return array( $brandName => $productItems );
+
+		$productItemByBrand = $this->getProductItemList( $brandName, $productFiles['items'], $currentPageNumber ); //PageNumberList Trait
+		$productItemByBrand = $this->getProductItemsFromCurrentPage( $brandName, $productItemByBrand, $currentPageNumber ); // GetProudctItemsFromCurrentPage Trait
+	
+		return array( $brandName => $productItemByBrand );
 	}
 
 	function getCurrentPageNumber( $params ) {
-		return isset( $params[0] ) ? $params[0] : 1;
+		return isset( $params[0] ) ? $params[0] : 0;
 	}
 
 	function getBrandName( $productFile ) {
@@ -32,35 +32,25 @@ trait BrandItems {
 }
 
 trait GetProudctItemsFromCurrentPage {
-	function getProductItemsFromCurrentPage( $brandName, $pageNumberWithProductFile, $currentPageNumber ) {
-		$firstKey = $this->getFirstKeyFromArray( $pageNumberWithProductFile );
-		$productFile = $this->getProductFilename( $pageNumberWithProductFile, $firstKey );
-		$productItems = $this->getProductItemsFromProductFile( $productFile );
-		$productItems = $this->filterOnlyBrandNameItems( $brandName, $productItems ); // PageNumberList Trait
-		$productItems = $this->splitArrayIntoChunks( $productItems );
-		$productItems = $this->addPageNumberIntoChunks( $productItems ,$firstKey );
-		return $this->addPermalinkIntoProductItems( $productItems[$currentPageNumber], $productFile );
+	function getProductItemsFromCurrentPage( $brandName, $productItemByBrand, $currentPageNumber ) {
+		$productItems = $this->splitArrayIntoChunks( $productItemByBrand );
+		$productItems = $this->addPageNumberIntoChunks( $productItems );
+		$this->checkExistPageNumber( $productItems, $currentPageNumber );
+		return $productItems[$currentPageNumber];
 	}
 
-	function addPermalinkIntoProductItems( $productItems, $productFile ) {
-		$productFile = $this->cleanProductFile( $productFile );
-		foreach ( $productItems as $productKey => $item ) {
-			extract( $item );
-			$item['permalink'] = $this->getPermalink( $productFile, $productKey );
-			$items[$productKey] = $item;
+	function checkExistPageNumber( $productItems, $currentPageNumber ) {
+		$totalPage = count( $productItems );
+		if ( $currentPageNumber > $totalPage ) {
+			die( "Page Not Found" );
 		}
-		return $items;
 	}
 
-	function cleanProductFile( $productFile ) {
-		$arr = explode( '/', $productFile );
-		return str_replace( '.txt', '', end( $arr ) );
-	}
-
-	function addPageNumberIntoChunks( $productItems ,$firstKey ) {
+	function addPageNumberIntoChunks( $productItems ) {
+		$i = 1;
 		foreach ( $productItems as $item ) {
-			$items[$firstKey] = $item;
-			$firstKey++;
+			$items[$i] = $item;
+			$i++;
 		}
 		return $items;
 	}
@@ -68,68 +58,33 @@ trait GetProudctItemsFromCurrentPage {
 	function splitArrayIntoChunks( $productItems ) {
 		return array_chunk ( $productItems, $this->itemNumberPerPage, true );
 	}
-
-	function getProductItemsFromProductFile( $productFile ) {
-		return $this->readContentFromProductFile( $productFile ); //PageNumberList Trait
-	}
-
-	function getProductFilename( $pageNumberWithProductFile, $firstKey ) {
-		return $pageNumberWithProductFile[$firstKey];
-	}
-
-	function getFirstKeyFromArray( $pageNumberWithProductFile ) {
-		reset( $pageNumberWithProductFile );
-		return key( $pageNumberWithProductFile );
-	}
 }
 
-trait PageNumberList {
-	function getPageNumberList( $brandName, $productFiles, $currentPageNumber ) {
+trait ProductItemList {
+	function getProductItemList( $brandName, $productFiles, $currentPageNumber ) {
 		foreach ( $productFiles as $file ) {
 			$productFile = $this->getProductPath() . $file . '.txt';
 			$productItems = $this->readContentFromProductFile( $productFile );
-			$productItems = $this->filterOnlyBrandNameItems( $brandName, $productItems );
-			$pageNumber = $this->calculatePageNumberFromProductItems( $productItems );
-			$this->definePageNumberForProductFile( $pageNumber, $productFile );
+
+			$productFile = $this->cleanProductFile( $productFile );
+			$this->filterOnlyBrandNameItems( $productFile, $brandName, $productItems );
 		}
-		return $this->getCurrentProductFileAndKey( $currentPageNumber );
+		return $this->totalItems;
 	}
 
-	function filterOnlyBrandNameItems( $brandName, $productItems ) {
+	function filterOnlyBrandNameItems( $productFile, $brandName, $productItems ) {
 		$items = array();
 		foreach ( $productItems as $productKey => $item ) {
 			if ( $item['brand'] == $brandName ) {
-				$items[$productKey] = $item;
+				$item['permalink'] = $this->getPermalink( $productFile, $productKey );
+				$this->totalItems[$productKey] = $item;
 			}
 		}
-		return $items;
 	}
 
-	function getCurrentProductFileAndKey( $currentPageNumber ) {
-		$this->checkExistPageNumber( $currentPageNumber );
-		$productFileForCurrentPage = $this->pageNumberList[$currentPageNumber];
-		foreach ( $this->pageNumberList as $key => $file ) {
-			if ( $file == $productFileForCurrentPage ) {
-				$productFileAndKey[$key] = $file;
-			}
-		}
-		return $productFileAndKey;
-	}
-
-	function checkExistPageNumber( $currentPageNumber ) {
-		end( $this->pageNumberList );
-		$lastPageNumber = key( $this->pageNumberList );
-		
-		if ( $currentPageNumber > $lastPageNumber )
-			die( "Page Not Found");
-	}
-
-	function definePageNumberForProductFile( $pageNumber, $productFile ) {
-		$lastPage = $this->startPage + $pageNumber;
-		for ( $i = $this->startPage; $i < $lastPage; $i++ ) {
-			$this->pageNumberList[$i] = $productFile;
-		}
-		$this->startPage = $i;
+	function cleanProductFile( $productFile ) {
+		$arr = explode( '/', $productFile );
+		return str_replace( '.txt', '', end( $arr ) );
 	}
 
 	function getProductPath() {
@@ -138,11 +93,6 @@ trait PageNumberList {
 
 	function readContentFromProductFile( $productFile ) {
 		return unserialize( file_get_contents( $productFile ) );
-	}
-
-	function calculatePageNumberFromProductItems( $productItems ) {
-		$totalItemsNumber = count( $productItems );
-		return ceil( $totalItemsNumber / $this->itemNumberPerPage );
 	}
 }
 

@@ -5,8 +5,9 @@ trait CategoryPaginator {
 
 	function getPagination( $params, $pageNumberList, $catType ) {
 		$currentPageNumber = $this->getCurrentPageNumber( $params ); //CategoryItems Trait | BrandItems Trait
-		$lastPageNumber = $this->getLastPage( $pageNumberList );
+		$lastPageNumber = $this->getLastPage( $pageNumberList, $catType );
 		$catKey = $this->getCatKey( $params );
+
 		return array(
 			'url' => $this->getPageUrl( $catKey, $catType, $currentPageNumber, $lastPageNumber ),
 			'status' => $this->getPageStatus( $currentPageNumber, $lastPageNumber )
@@ -18,9 +19,17 @@ trait CategoryPaginator {
 			return $params[1];
 	}
 
-	function getLastPage( $pageNumberList ) {
-		end( $pageNumberList );
-		return $lastPage = key( $pageNumberList );
+	function getLastPage( $pageNumberList=null, $catType ) {
+		if ( $catType == 'category' ) {
+			end( $pageNumberList );
+			return $lastPage = key( $pageNumberList );
+		}
+
+		if ( $catType == 'brand' ) {
+			$totalItemNumber = count( $this->totalItems ); //see brandItem_trait.php
+			$lastpage = ceil( $totalItemNumber / CATEGORY_ITEM_NUMBER_PER_PAGE );
+			return $lastpage;
+		}
 	}
 }
 

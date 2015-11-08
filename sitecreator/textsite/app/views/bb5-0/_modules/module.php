@@ -9,7 +9,6 @@ include '_pageClass/BlogPage.php';
 include '_pageClass/BlogCategoryPage.php';
 include '_pageClass/BlogArticlePage.php';
 
-
 switch ( $currentPage ) {
 	case 'home-page':
 		$obj = new HomePage();
@@ -73,7 +72,7 @@ switch ( $currentPage ) {
 
 $data['current-page'] = $currentPage;
 if ( $currentPage == 'product-page' ) {
-	$data['product-detail'] = $module['productDetail'];
+	$data['product-detail'] = $module['detail'];
 	$data['spin-content'] = $module['spinContent'];
 }
 

@@ -4,9 +4,31 @@
 //extends
 @import 'extends';
 
+//Main
 @import 'main/header';
 @import 'main/footer';
 @import 'main/layout';
+@import 'main/breadcrumb';
 
+//Home
+@import 'home/cycleSlideShow';
+@import 'home/newProduct';
+
+//Product
+@import 'product/productDetail';
+@import 'product/relatedProducts';
+@import 'product/searchKeyword';
+@import 'product/pagination';
+
+//Blog
 @import 'blog/articleList';
+
+//Categories
+@import 'categories/categories';
+
+//Category
+@import 'category/categoryItems';
+
+//Static Page
+@import 'static-page/page';
 

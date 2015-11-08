@@ -1,4 +1,4 @@
-<div id="cat-link-container">
+<div id="categories-link-container">
 	<?php if ( isset( $module['links'] ) ) echo $module['links']?>
 </div>
 <div id="cat-pagination-container">

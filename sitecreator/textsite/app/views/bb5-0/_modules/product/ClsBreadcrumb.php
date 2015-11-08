@@ -4,10 +4,9 @@ class ClsBreadcrumb {
 
 	function createHtml( $data = null ) {
 	?>
-		<div id="breadcrumb-container">
-			<h1><?php $this->productName( $data )?></h1>
-			<div id="breadcrumb"><?php $this->breadcrumb( $data )?></div>
-		</div>
+
+	<?php $this->breadcrumb( $data )?>
+
 	<?php
 	}
 
@@ -19,7 +18,7 @@ class ClsBreadcrumb {
 		extract( $data );
 		$this->_home();
 		echo ' > ';
-		$this->_brand( $brand);
+		$this->_category( $category, $categoryLink ); 
 		echo ' > ';
 		$this->_product( $keyword, $permalink );
 	}

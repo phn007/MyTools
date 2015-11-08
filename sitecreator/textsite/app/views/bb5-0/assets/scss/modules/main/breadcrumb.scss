@@ -1,0 +1,23 @@
+#breadcrumb {
+	margin-bottom: 20px;
+
+	#breadcrumb-container {
+		@include outer-container;
+	}
+}
+
+#breadcrumb {
+	background-color: #F5F5F5;
+	#breadcrumb-container {
+		padding: 8px;
+
+		a {
+			text-decoration: none;
+			color: transparentize(black, 0.6);
+
+			&:hover {
+				color: $base-color;
+			}
+		}
+	}
+}

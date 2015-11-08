@@ -1,6 +1,8 @@
 <?php
 class ClsFooter {
 	function createHtml( $data ) {
+		$sub = new SubdomainLinkListAddon();
+		$subdomain = $sub->linkList();
 	?>
 		<footer id="footer-container">
 			<div id="top-footer">
@@ -11,8 +13,22 @@ class ClsFooter {
 	        	</ul>
 	        	<ul id="footer-category">
 	            	<li><a href="<?php echo HOME_LINK?>">Home</a></li>
+	            	<?php echo $this->linkout( $data )?>
 	        	</ul>
 			</div>
+
+			<?php 
+			if ( $subdomain ) {
+				echo '<hr id="hr-footer">';
+				echo '<div id="related-site">';
+			 	foreach ( $subdomain as $sub ) {
+			 		$subLink = 'http://' . $sub;
+			 		echo '<a href="' . $subLink . '">' . $sub . '</a>, ';
+			 	}
+			 	echo '</div>';
+			 }
+		 	?>
+
 			<hr id="hr-footer">
 			<div id="bottom-footer">
 				<?php echo $this->copyright()?>
@@ -29,10 +45,10 @@ class ClsFooter {
 	<?php
 	}
 
-	function linkout( $footer ) {
-		if ( $footer['current-page'] == 'product-page' ): 
-			extract( $footer['spin-content'] );
-			extract( $footer['product-detail'] );
+	function linkout( $data ) {
+		if ( $data['current-page'] == 'product-page' ): 
+			extract( $data['spin-content'] );	
+			extract( $data['product-detail'] );
 		?>
 		<li><a rel="nofollow" target="_blank" href="<?php echo $this->_getLinkout( $keyword, $linkout1 )?>"><?php echo $keyword?></a></li>
 

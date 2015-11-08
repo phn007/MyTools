@@ -31,6 +31,7 @@ class ProductPage extends Controller {
 			'pagination' => Html::get( 'productPage', 'pagination', $paging ),
 			'searchKeyword' => Html::get( 'productPage', 'searchKeyword', $searchKeyword ),
 			'spinContent' => $spinContent,
+			'detail' => $productDetail, //for footer
 			'seoTags' => $seoTags
 		);
 	}

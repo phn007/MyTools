@@ -2,6 +2,7 @@
 class ClsProductDetail {
 	use SocialShare;
 	use BrandIndexLink;
+	use CategoryLink;
 
 	function createHtml( $data ) {
 	?>
@@ -27,7 +28,7 @@ class ClsProductDetail {
 	function infomation( $data ) {
 		extract( $data['detail'] );
 	?>
-		<h2><?php $this->_productName( $goto, $keyword  )?></h2>
+		<h1><?php $this->_productName( $goto, $keyword  )?></h1>
 		<p id="price"><span id="amount">$<?php echo $price?></span></p>
 		<hr>
 		<p id="description"><?php $this->_description( $description, $data['spin'] )?></p>
@@ -86,7 +87,7 @@ class ClsProductDetail {
 
 	function _brand( $brand ) {
 		$brandSlug = helper::clean_string( $brand );
-		$brandLink = $this->getCategoryByBrand( $brandSlug );
+		$brandLink = $this->getCategoryLink( 'brand', $brandSlug, 1 );
 		echo '<a title="' . $brand . '" href="' . $brandLink . '">' . $brand . '</a>';
 	}
 
