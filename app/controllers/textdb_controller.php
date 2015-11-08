@@ -96,6 +96,16 @@ class TextdbController extends Controller {
 			$model = $this->model( 'textdb/textdb' );
 			$model->deleteDatabase( $dbs );
 		}
+
+		if ( $function == 'remove-duplicate' ) {
+			echo "Remove Duplicate Row\n\n";
+
+			$iniFilename = $params['iniFilename'];
+			$dbs = $this->getDatabaseNames( $iniFilename );
+			$model = $this->model( 'textdb/removeDuplicateRow' );
+
+			$model->remove( $dbs );
+		}
 		echo "\n";
 	}
 }

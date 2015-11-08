@@ -42,7 +42,10 @@ class OptionList {
 		$calcFunction['functions'] = array( '*' => array( 'iniFilename', 'number') );
 
 		$delDbAction = 'db';
-		$delDbFunction['functions'] = array( 'del' => array( 'iniFilename' ) );
+		$delDbFunction['functions'] = array( 
+			'del' => array( 'iniFilename' ),
+			'remove-duplicate' => array( 'iniFilename' )
+		);
 
 		return array(
 			$textdbAction => $textdbFunction,
