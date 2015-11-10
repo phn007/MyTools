@@ -17,6 +17,11 @@ trait Htaccess {
 		$hta .= 'RewriteCond %{REQUEST_FILENAME} !-d' . PHP_EOL;
 		$hta .= 'RewriteRule (.*) index.php/$1' . PHP_EOL;
 
+		$hta .= PHP_EOL;
+		$hta .= 'order allow,deny' . PHP_EOL;
+		$hta .= 'deny from 38.99.82.' . PHP_EOL;
+		$hta .= 'allow from all' . PHP_EOL;
+
 		$destination = $this->setHtaccessDestination( $projectName, $siteDirName );
 		Helper::make_dir( $destination );
 		$this->writeHtaccessFile( $destination, $hta );
